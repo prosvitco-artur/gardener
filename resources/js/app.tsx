@@ -1,6 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import TestComponent from './components/TestComponent';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Services from './components/Services';
 
 import.meta.glob([
   '../images/**',
@@ -10,7 +12,9 @@ import.meta.glob([
 const App = () => {
   return (
     <div>
-      <TestComponent />
+      <Header onConsultationClick={() => {}} />
+      <Hero onConsultationClick={() => {}} />
+      <Services />
     </div>
   );
 };
