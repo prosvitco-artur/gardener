@@ -1,0 +1,139 @@
+<?php
+
+namespace App;
+
+use Carbon_Fields\Block;
+use Carbon_Fields\Field;
+
+add_action('carbon_fields_register_fields', function () {
+    Block::make(__('Header Block', 'sage'))
+        ->set_description(__('Header з навігацією та логотипом', 'sage'))
+        ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
+        ->set_icon('admin-site')
+        ->add_fields([
+            Field::make('text', 'logo_text', __('Текст логотипу', 'sage'))
+                ->set_default_value('GreenScape Pro'),
+            Field::make('image', 'logo_image', __('Зображення логотипу', 'sage')),
+            Field::make('complex', 'menu_items', __('Пункти меню', 'sage'))
+                ->add_fields([
+                    Field::make('text', 'label', __('Назва', 'sage')),
+                    Field::make('text', 'url', __('URL', 'sage')),
+                ])
+                ->set_default_value([
+                    ['label' => 'Services', 'url' => '#services'],
+                    ['label' => 'About', 'url' => '#about'],
+                    ['label' => 'Gallery', 'url' => '#gallery'],
+                    ['label' => 'Contact', 'url' => '#contact'],
+                ]),
+            Field::make('text', 'cta_text', __('Текст кнопки CTA', 'sage'))
+                ->set_default_value('Get Quote'),
+        ])
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            $block_id = 'header-block-' . uniqid();
+            ?>
+            <div 
+                id="<?php echo esc_attr($block_id); ?>" 
+                class="gardener-header-block"
+                data-logo-text="<?php echo esc_attr($fields['logo_text']); ?>"
+                data-logo-image="<?php echo esc_attr($fields['logo_image'] ? wp_get_attachment_url($fields['logo_image']) : ''); ?>"
+                data-menu-items="<?php echo esc_attr(json_encode($fields['menu_items'])); ?>"
+                data-cta-text="<?php echo esc_attr($fields['cta_text']); ?>"
+            ></div>
+            <?php
+        });
+
+    Block::make(__('Hero Block', 'sage'))
+        ->set_description(__('Hero секція з заголовком та CTA кнопкою', 'sage'))
+        ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
+        ->set_icon('cover-image')
+        ->add_fields([
+            Field::make('text', 'title', __('Заголовок', 'sage'))
+                ->set_default_value('Transform Your Outdoor Space'),
+            Field::make('textarea', 'description', __('Опис', 'sage'))
+                ->set_default_value('Professional landscaping services to bring your dream garden to life'),
+            Field::make('image', 'background_image', __('Фонове зображення', 'sage')),
+            Field::make('text', 'cta_text', __('Текст кнопки', 'sage'))
+                ->set_default_value('Get Free Consultation'),
+            Field::make('text', 'cta_url', __('URL кнопки', 'sage'))
+                ->set_default_value('#'),
+        ])
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            $block_id = 'hero-block-' . uniqid();
+            $bg_image = $fields['background_image'] ? wp_get_attachment_url($fields['background_image']) : '';
+            ?>
+            <div 
+                id="<?php echo esc_attr($block_id); ?>" 
+                class="gardener-hero-block"
+                data-title="<?php echo esc_attr($fields['title']); ?>"
+                data-description="<?php echo esc_attr($fields['description']); ?>"
+                data-background-image="<?php echo esc_attr($bg_image); ?>"
+                data-cta-text="<?php echo esc_attr($fields['cta_text']); ?>"
+                data-cta-url="<?php echo esc_attr($fields['cta_url']); ?>"
+            ></div>
+            <?php
+        });
+
+    Block::make(__('Services Block', 'sage'))
+        ->set_description(__('Секція з послугами', 'sage'))
+        ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
+        ->set_icon('grid-view')
+        ->add_fields([
+            Field::make('text', 'title', __('Заголовок секції', 'sage'))
+                ->set_default_value('Our Services'),
+            Field::make('textarea', 'description', __('Опис секції', 'sage'))
+                ->set_default_value('Comprehensive landscaping solutions for residential and commercial properties'),
+            Field::make('complex', 'services', __('Послуги', 'sage'))
+                ->add_fields([
+                    Field::make('text', 'title', __('Назва послуги', 'sage')),
+                    Field::make('textarea', 'description', __('Опис послуги', 'sage')),
+                    Field::make('image', 'image', __('Зображення', 'sage')),
+                    Field::make('select', 'icon', __('Іконка', 'sage'))
+                        ->add_options([
+                            'palette' => 'Palette',
+                            'scissors' => 'Scissors',
+                            'droplets' => 'Droplets',
+                        ]),
+                ])
+                ->set_default_value([
+                    [
+                        'title' => 'Landscape Design',
+                        'description' => 'Custom landscape designs tailored to your vision and property. From concept to creation, we bring beautiful outdoor spaces to life.',
+                        'icon' => 'palette',
+                    ],
+                    [
+                        'title' => 'Garden Maintenance',
+                        'description' => 'Regular maintenance services to keep your garden healthy and beautiful year-round. Pruning, weeding, mulching, and more.',
+                        'icon' => 'scissors',
+                    ],
+                    [
+                        'title' => 'Irrigation Systems',
+                        'description' => 'Professional installation of automatic irrigation systems. Efficient watering solutions that save time, water, and money.',
+                        'icon' => 'droplets',
+                    ],
+                ]),
+        ])
+        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+            $block_id = 'services-block-' . uniqid();
+            $services = [];
+            if (is_array($fields['services'])) {
+                foreach ($fields['services'] as $service) {
+                    $services[] = [
+                        'title' => $service['title'] ?? '',
+                        'description' => $service['description'] ?? '',
+                        'image' => !empty($service['image']) ? wp_get_attachment_url($service['image']) : '',
+                        'icon' => $service['icon'] ?? 'palette',
+                    ];
+                }
+            }
+            ?>
+            <div 
+                id="<?php echo esc_attr($block_id); ?>" 
+                class="gardener-services-block"
+                data-title="<?php echo esc_attr($fields['title']); ?>"
+                data-description="<?php echo esc_attr($fields['description']); ?>"
+                data-services="<?php echo esc_attr(json_encode($services)); ?>"
+            ></div>
+            <?php
+        });
+});
+
