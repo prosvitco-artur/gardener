@@ -6,42 +6,6 @@ use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
 add_action('carbon_fields_register_fields', function () {
-    Block::make(__('Header Block', 'sage'))
-        ->set_description(__('Header з навігацією та логотипом', 'sage'))
-        ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
-        ->set_icon('admin-site')
-        ->add_fields([
-            Field::make('text', 'logo_text', __('Текст логотипу', 'sage'))
-                ->set_default_value('GreenScape Pro'),
-            Field::make('image', 'logo_image', __('Зображення логотипу', 'sage')),
-            Field::make('complex', 'menu_items', __('Пункти меню', 'sage'))
-                ->add_fields([
-                    Field::make('text', 'label', __('Назва', 'sage')),
-                    Field::make('text', 'url', __('URL', 'sage')),
-                ])
-                ->set_default_value([
-                    ['label' => 'Services', 'url' => '#services'],
-                    ['label' => 'About', 'url' => '#about'],
-                    ['label' => 'Gallery', 'url' => '#gallery'],
-                    ['label' => 'Contact', 'url' => '#contact'],
-                ]),
-            Field::make('text', 'cta_text', __('Текст кнопки CTA', 'sage'))
-                ->set_default_value('Get Quote'),
-        ])
-        ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            $block_id = 'header-block-' . uniqid();
-            ?>
-            <div 
-                id="<?php echo esc_attr($block_id); ?>" 
-                class="gardener-header-block"
-                data-logo-text="<?php echo esc_attr($fields['logo_text']); ?>"
-                data-logo-image="<?php echo esc_attr($fields['logo_image'] ? wp_get_attachment_url($fields['logo_image']) : ''); ?>"
-                data-menu-items="<?php echo esc_attr(json_encode($fields['menu_items'])); ?>"
-                data-cta-text="<?php echo esc_attr($fields['cta_text']); ?>"
-            ></div>
-            <?php
-        });
-
     Block::make(__('Hero Block', 'sage'))
         ->set_description(__('Hero секція з заголовком та CTA кнопкою', 'sage'))
         ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
