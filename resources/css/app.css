@@ -10,6 +10,18 @@ html {
   scroll-margin-top: 100px;
 }
 
+@layer base {
+  h1 {
+    @apply text-5xl md:text-7xl font-bold mb-6;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl font-bold text-gray-900 mb-4;
+  }
+  p {
+    @apply text-xl mb-8 leading-relaxed;
+  }
+}
+
 @layer components {
   .icon {
     display: var(--icon-display, block);
