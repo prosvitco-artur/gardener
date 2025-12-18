@@ -1,10 +1,10 @@
 @php
-  $title = $fields['title'] ?? __('Transform Your Outdoor Space', 'sage');
-  $description = $fields['description'] ?? __('Professional landscaping services to bring your dream garden to life', 'sage');
-  $bgImageId = $fields['background_image'] ?? null;
+  $title = $fields['title'];
+  $description = $fields['description'];
+  $bgImageId = $fields['background_image'];
   $bgImageUrl = $bgImageId ? wp_get_attachment_image_url($bgImageId, 'full') : 'https://images.pexels.com/photos/1453499/pexels-photo-1453499.jpeg?auto=compress&cs=tinysrgb&w=1920';
-  $ctaText = $fields['cta_text'] ?? __('Get Free Consultation', 'sage');
-  $ctaUrl = $fields['cta_url'] ?? '#';
+  $ctaText = $fields['cta_text'];
+  $ctaUrl = $fields['cta_url'];
 @endphp
 
 <section class="relative h-screen min-h-[600px] flex items-center justify-center gardener-hero-block">

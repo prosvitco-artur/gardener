@@ -43,30 +43,16 @@ add_action('carbon_fields_register_fields', function () {
                             'scissors' => 'Scissors',
                             'droplets' => 'Droplets',
                         ]),
-                ]),
+                ])
+                ->set_layout('tabbed-horizontal')
+                ->set_header_template('<%- title %>'),
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            $block_id = 'services-block-' . uniqid();
-            $services = [];
-            if (is_array($fields['services'])) {
-                foreach ($fields['services'] as $service) {
-                    $services[] = [
-                        'title' => $service['title'] ?? '',
-                        'description' => $service['description'] ?? '',
-                        'image' => !empty($service['image']) ? wp_get_attachment_url($service['image']) : '',
-                        'icon' => $service['icon'] ?? 'palette',
-                    ];
-                }
-            }
-            ?>
-            <div 
-                id="<?php echo esc_attr($block_id); ?>" 
-                class="gardener-services-block"
-                data-title="<?php echo esc_attr($fields['title']); ?>"
-                data-description="<?php echo esc_attr($fields['description']); ?>"
-                data-services="<?php echo esc_attr(json_encode($services)); ?>"
-            ></div>
-            <?php
+            echo view('blocks.services', [
+                'fields' => $fields,
+                'attributes' => $attributes,
+                'inner_blocks' => $inner_blocks,
+            ])->render();
         });
 });
 
