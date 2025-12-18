@@ -1,18 +1,20 @@
 @php
-  $logoText = carbon_get_theme_option('header_logo_text') ?: 'GreenScape Pro';
-  $logoImageId = carbon_get_theme_option('header_logo_image');
-  $logoImage = $logoImageId ? wp_get_attachment_url($logoImageId) : '';
-  $menuItems = carbon_get_theme_option('header_menu_items') ?: [];
-  $ctaText = carbon_get_theme_option('header_cta_text') ?: 'Get Quote';
+  $siteName = get_bloginfo('name');
+  $hasCustomLogo = has_custom_logo();
+  $customLogo = $hasCustomLogo ? get_custom_logo() : '';
+  $ctaText = carbon_get_theme_option('header_cta_text') ?: __('Get Quote', 'sage');
 @endphp
 
 <header id="gardener-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent" data-scrolled="false">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-20">
-      <div class="flex items-center gap-2">
+      <a href="{{ esc_url(home_url('/')) }}" class="flex items-center gap-2" rel="home">
         <div class="p-2 rounded-lg bg-white header-logo-icon">
-          @if($logoImage)
-            <img src="{{ esc_url($logoImage) }}" alt="{{ esc_attr($logoText) }}" class="w-7 h-7" />
+          @if($hasCustomLogo && $customLogo)
+            @php
+              $customLogoHtml = preg_replace('/<img([^>]*)>/i', '<img$1 class="w-7 h-7" />', $customLogo);
+            @endphp
+            {!! $customLogoHtml !!}
           @else
             <svg class="w-7 h-7 text-green-600 header-logo-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
@@ -21,22 +23,23 @@
           @endif
         </div>
         <span class="text-2xl font-bold text-white header-logo-text">
-          {{ esc_html($logoText) }}
+          {{ esc_html($siteName) }}
         </span>
-      </div>
+      </a>
 
       <nav class="hidden md:flex items-center gap-8">
-        @foreach($menuItems as $item)
-          <a 
-            href="{{ esc_url($item['url']) }}" 
-            class="font-semibold transition-colors text-white hover:text-green-300 header-menu-link"
-            @if(str_starts_with($item['url'], '#'))
-              data-smooth-scroll="{{ esc_attr($item['url']) }}"
-            @endif
-          >
-            {{ esc_html($item['label']) }}
-          </a>
-        @endforeach
+        @php
+          $menuOutput = wp_nav_menu([
+            'theme_location' => 'primary_navigation',
+            'container' => false,
+            'menu_class' => 'flex items-center gap-8',
+            'fallback_cb' => [\App\View\MenuFallback::class, 'fallback'],
+            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+            'walker' => new \App\View\NavWalker(),
+            'echo' => false,
+          ]);
+        @endphp
+        {!! $menuOutput !!}
         <button 
           class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 header-cta-btn"
           data-consultation-btn
@@ -47,7 +50,7 @@
 
       <button 
         class="md:hidden text-white header-mobile-toggle" 
-        aria-label="Toggle menu"
+        aria-label="{{ __('Toggle menu', 'sage') }}"
         data-mobile-toggle
       >
         <svg class="w-7 h-7 header-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -62,17 +65,18 @@
 
   <div class="md:hidden bg-white border-t hidden header-mobile-menu" data-mobile-menu>
     <nav class="flex flex-col p-4 space-y-4">
-      @foreach($menuItems as $item)
-        <a 
-          href="{{ esc_url($item['url']) }}" 
-          class="text-gray-700 font-semibold hover:text-green-600 header-mobile-link"
-          @if(str_starts_with($item['url'], '#'))
-            data-smooth-scroll="{{ esc_attr($item['url']) }}"
-          @endif
-        >
-          {{ esc_html($item['label']) }}
-        </a>
-      @endforeach
+      @php
+        $mobileMenuOutput = wp_nav_menu([
+          'theme_location' => 'primary_navigation',
+          'container' => false,
+          'menu_class' => 'flex flex-col space-y-4',
+          'fallback_cb' => [\App\View\MenuFallback::class, 'fallback'],
+          'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+          'walker' => new \App\View\NavWalker(),
+          'echo' => false,
+        ]);
+      @endphp
+      {!! $mobileMenuOutput !!}
       <button 
         class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold header-mobile-cta"
         data-consultation-btn

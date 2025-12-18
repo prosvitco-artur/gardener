@@ -12,29 +12,21 @@ add_action('carbon_fields_register_fields', function () {
         ->set_icon('cover-image')
         ->add_fields([
             Field::make('text', 'title', __('Заголовок', 'sage'))
-                ->set_default_value('Transform Your Outdoor Space'),
+                ->set_default_value(__('Transform Your Outdoor Space', 'sage')),
             Field::make('textarea', 'description', __('Опис', 'sage'))
-                ->set_default_value('Professional landscaping services to bring your dream garden to life'),
+                ->set_default_value(__('Professional landscaping services to bring your dream garden to life', 'sage')),
             Field::make('image', 'background_image', __('Фонове зображення', 'sage')),
             Field::make('text', 'cta_text', __('Текст кнопки', 'sage'))
-                ->set_default_value('Get Free Consultation'),
+                ->set_default_value(__('Get Free Consultation', 'sage')),
             Field::make('text', 'cta_url', __('URL кнопки', 'sage'))
                 ->set_default_value('#'),
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-            $block_id = 'hero-block-' . uniqid();
-            $bg_image = $fields['background_image'] ? wp_get_attachment_url($fields['background_image']) : '';
-            ?>
-            <div 
-                id="<?php echo esc_attr($block_id); ?>" 
-                class="gardener-hero-block"
-                data-title="<?php echo esc_attr($fields['title']); ?>"
-                data-description="<?php echo esc_attr($fields['description']); ?>"
-                data-background-image="<?php echo esc_attr($bg_image); ?>"
-                data-cta-text="<?php echo esc_attr($fields['cta_text']); ?>"
-                data-cta-url="<?php echo esc_attr($fields['cta_url']); ?>"
-            ></div>
-            <?php
+            echo view('blocks.hero', [
+                'fields' => $fields,
+                'attributes' => $attributes,
+                'inner_blocks' => $inner_blocks,
+            ])->render();
         });
 
     Block::make(__('Services Block', 'sage'))
