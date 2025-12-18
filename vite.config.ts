@@ -15,6 +15,7 @@ export default defineConfig({
         'resources/js/app.tsx',
         'resources/css/editor.css',
         'resources/js/editor.js',
+        'resources/js/header.js',
       ],
       refresh: true,
     }),

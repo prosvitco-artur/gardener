@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import HeaderBlock from './components/blocks/HeaderBlock';
 import HeroBlock from './components/blocks/HeroBlock';
 import ServicesBlock from './components/blocks/ServicesBlock';
 
@@ -9,19 +8,6 @@ import.meta.glob([
   '../images/**',
   '../fonts/**',
 ]);
-
-const mountHeader = () => {
-  const headerElement = document.getElementById('gardener-header');
-  if (headerElement && !headerElement.hasAttribute('data-mounted')) {
-    headerElement.setAttribute('data-mounted', 'true');
-    const root = createRoot(headerElement);
-    root.render(
-      <StrictMode>
-        <HeaderBlock blockId="gardener-header" />
-      </StrictMode>
-    );
-  }
-};
 
 const mountBlocks = () => {
   const heroBlocks = document.querySelectorAll('.gardener-hero-block');
@@ -52,7 +38,6 @@ const mountBlocks = () => {
 };
 
 const init = () => {
-  mountHeader();
   mountBlocks();
 };
 
@@ -64,7 +49,6 @@ if (document.readyState === 'loading') {
 
 if (typeof (window as any).wp !== 'undefined' && (window as any).wp.domReady) {
   (window as any).wp.domReady(() => {
-    mountHeader();
     mountBlocks();
   });
 }
