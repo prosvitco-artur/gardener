@@ -16,10 +16,10 @@
   </div>
 
   <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+    <h1>
       {{ esc_html($title) }}
     </h1>
-    <p class="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed">
+    <p class="md:text-2xl mb-8 text-gray-100 leading-relaxed">
       {{ esc_html($description) }}
     </p>
     @if($ctaUrl === '#')

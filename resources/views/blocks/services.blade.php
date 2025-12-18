@@ -1,9 +1,7 @@
 <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {{ esc_html($fields['title'] ?? '') }}
-          </h2>
+          <h2>{{ esc_html($fields['title'] ?? '') }}</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             {{ esc_html($fields['description'] ?? '') }}
           </p>
