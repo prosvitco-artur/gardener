@@ -2,6 +2,14 @@
 @source "../views/";
 @source "../../app/";
 
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 100px;
+}
+
 @layer components {
   .icon {
     display: var(--icon-display, block);

@@ -2,6 +2,7 @@ export default {
   theme: {
     extend: {
       spacing: {
+        '120px': '120px',
         '60px': '60px',
         '80px': '80px',
         '32px': '32px',
@@ -11,7 +12,6 @@ export default {
         '12px': '12px',
         '8px': '8px',
         '4px': '4px',
-        '120px': '120px',
       },
       colors: {
         emerald: {

@@ -2,6 +2,7 @@
   const header = document.getElementById('gardener-header');
   if (!header) return;
 
+  const HEADER_HEIGHT = 100;
   const mobileToggle = header.querySelector('[data-mobile-toggle]');
   const mobileMenu = header.querySelector('[data-mobile-menu]');
   const menuIcon = header.querySelector('.header-menu-icon');
@@ -77,11 +78,26 @@
   }
 
   function handleSmoothScroll(e, url) {
-    if (url.startsWith('#')) {
+    if (!url) return;
+    
+    const urlObj = new URL(url, window.location.origin);
+    const hash = urlObj.hash;
+    const isSamePage = urlObj.pathname === window.location.pathname || url.startsWith('#');
+    
+    if (hash && isSamePage) {
       e.preventDefault();
-      const section = document.querySelector(url);
+      const targetId = hash.substring(1);
+      const section = document.getElementById(targetId) || document.querySelector(hash);
+      
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = sectionPosition - HEADER_HEIGHT;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
         if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
           toggleMobileMenu();
         }
@@ -104,6 +120,14 @@
   smoothScrollLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const url = link.getAttribute('data-smooth-scroll') || link.getAttribute('href');
+      handleSmoothScroll(e, url);
+    });
+  });
+
+  const allMenuLinks = header.querySelectorAll('nav a[href*="#"]');
+  allMenuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const url = link.getAttribute('href');
       handleSmoothScroll(e, url);
     });
   });
