@@ -6,6 +6,16 @@ import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
   base: '/wp-content/themes/gardener/public/build/',
+  server: {
+    host: '0.0.0.0',
+    port: 5174,
+    strictPort: true,
+    cors: true,
+    hmr: {
+      host: 'localhost',
+      protocol: 'ws',
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),
