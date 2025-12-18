@@ -11,15 +11,11 @@ add_action('carbon_fields_register_fields', function () {
         ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
         ->set_icon('cover-image')
         ->add_fields([
-            Field::make('text', 'title', __('Заголовок', 'sage'))
-                ->set_default_value(__('Transform Your Outdoor Space', 'sage')),
-            Field::make('textarea', 'description', __('Опис', 'sage'))
-                ->set_default_value(__('Professional landscaping services to bring your dream garden to life', 'sage')),
+            Field::make('text', 'title', __('Заголовок', 'sage')),
+            Field::make('textarea', 'description', __('Опис', 'sage')),
             Field::make('image', 'background_image', __('Фонове зображення', 'sage')),
-            Field::make('text', 'cta_text', __('Текст кнопки', 'sage'))
-                ->set_default_value(__('Get Free Consultation', 'sage')),
-            Field::make('text', 'cta_url', __('URL кнопки', 'sage'))
-                ->set_default_value('#'),
+            Field::make('text', 'cta_text', __('Текст кнопки', 'sage')),
+            Field::make('text', 'cta_url', __('URL кнопки', 'sage')),
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
             echo view('blocks.hero', [
@@ -34,10 +30,8 @@ add_action('carbon_fields_register_fields', function () {
         ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
         ->set_icon('grid-view')
         ->add_fields([
-            Field::make('text', 'title', __('Заголовок секції', 'sage'))
-                ->set_default_value('Our Services'),
-            Field::make('textarea', 'description', __('Опис секції', 'sage'))
-                ->set_default_value('Comprehensive landscaping solutions for residential and commercial properties'),
+            Field::make('text', 'title', __('Заголовок секції', 'sage')),
+            Field::make('textarea', 'description', __('Опис секції', 'sage')),
             Field::make('complex', 'services', __('Послуги', 'sage'))
                 ->add_fields([
                     Field::make('text', 'title', __('Назва послуги', 'sage')),
@@ -49,23 +43,6 @@ add_action('carbon_fields_register_fields', function () {
                             'scissors' => 'Scissors',
                             'droplets' => 'Droplets',
                         ]),
-                ])
-                ->set_default_value([
-                    [
-                        'title' => 'Landscape Design',
-                        'description' => 'Custom landscape designs tailored to your vision and property. From concept to creation, we bring beautiful outdoor spaces to life.',
-                        'icon' => 'palette',
-                    ],
-                    [
-                        'title' => 'Garden Maintenance',
-                        'description' => 'Regular maintenance services to keep your garden healthy and beautiful year-round. Pruning, weeding, mulching, and more.',
-                        'icon' => 'scissors',
-                    ],
-                    [
-                        'title' => 'Irrigation Systems',
-                        'description' => 'Professional installation of automatic irrigation systems. Efficient watering solutions that save time, water, and money.',
-                        'icon' => 'droplets',
-                    ],
                 ]),
         ])
         ->set_render_callback(function ($fields, $attributes, $inner_blocks) {

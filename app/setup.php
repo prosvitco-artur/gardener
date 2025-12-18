@@ -77,6 +77,8 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
+        'footer_services' => __('Footer Services', 'sage'),
+        'footer_company' => __('Footer Company', 'sage'),
     ]);
 
     /**

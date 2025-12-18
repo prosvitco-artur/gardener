@@ -10,9 +10,12 @@ class MenuFallback
         $items_wrap = isset($args['items_wrap']) ? $args['items_wrap'] : '<ul id="%1$s" class="%2$s">%3$s</ul>';
         
         $isMobile = str_contains($menu_class, 'space-y-4');
-        $linkClass = $isMobile 
-            ? 'font-semibold transition-colors text-gray-700 hover:text-green-600 header-mobile-link'
-            : 'font-semibold transition-colors text-white hover:text-green-300 header-menu-link';
+        $isFooter = str_contains($menu_class, 'text-gray-400');
+        $linkClass = $isFooter
+            ? 'hover:text-green-400 transition-colors'
+            : ($isMobile 
+                ? 'font-semibold transition-colors text-gray-700 hover:text-green-600 header-mobile-link'
+                : 'font-semibold transition-colors text-white hover:text-green-300 header-menu-link');
 
         $output = sprintf($items_wrap, '', $menu_class ? ' class="' . esc_attr($menu_class) . '"' : '', '');
 
