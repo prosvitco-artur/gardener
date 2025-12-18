@@ -26,6 +26,10 @@ export default defineConfig({
       disableTailwindColors: false,
       disableTailwindFonts: false,
       disableTailwindFontSizes: false,
+      tailwindConfig: './tailwind.config.js',
+      baseThemeJsonPath: './theme.json',
+      outputPath: 'assets/theme.json',
+      cssFile: 'app.css',
     }),
   ],
   resolve: {
@@ -37,4 +41,3 @@ export default defineConfig({
     },
   },
 })
-
