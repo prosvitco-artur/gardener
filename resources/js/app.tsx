@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import ServicesBlock from './components/blocks/ServicesBlock';
+import Contact from './components/Contact';
 
 // @ts-ignore
 import.meta.glob([
@@ -9,37 +9,22 @@ import.meta.glob([
 ]);
 
 const mountBlocks = () => {
-  const servicesBlocks = document.querySelectorAll('.gardener-services-block');
-  servicesBlocks.forEach((block) => {
-    if (block.id && !block.hasAttribute('data-mounted')) {
+  const contactBlocks = document.querySelectorAll('#gardener-contact-block');
+  contactBlocks.forEach((block) => {
+    if (!block.hasAttribute('data-mounted')) {
       block.setAttribute('data-mounted', 'true');
       const root = createRoot(block);
       root.render(
         <StrictMode>
-          <ServicesBlock blockId={block.id} />
+          <Contact />
         </StrictMode>
       );
     }
   });
 };
 
-const initHeroBlocks = () => {
-  const consultationBtns = document.querySelectorAll('.gardener-hero-block [data-consultation-btn]');
-  consultationBtns.forEach((btn) => {
-    if (!btn.hasAttribute('data-hero-listener')) {
-      btn.setAttribute('data-hero-listener', 'true');
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const event = new CustomEvent('gardener:consultation-click');
-        window.dispatchEvent(event);
-      });
-    }
-  });
-};
-
 const init = () => {
   mountBlocks();
-  initHeroBlocks();
 };
 
 if (document.readyState === 'loading') {
@@ -51,7 +36,6 @@ if (document.readyState === 'loading') {
 if (typeof (window as any).wp !== 'undefined' && (window as any).wp.domReady) {
   (window as any).wp.domReady(() => {
     mountBlocks();
-    initHeroBlocks();
   });
 }
 
