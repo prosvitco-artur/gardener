@@ -21,16 +21,16 @@ class MakeBlockCommand extends Command
         $viewPath = get_template_directory() . '/resources/views/blocks/' . $viewName . '.blade.php';
 
         if (file_exists($blockPath)) {
-            $this->error("Block {$blockName} already exists!");
+            $this->error(sprintf(__('Block %s already exists!', 'sage'), $blockName));
             return 1;
         }
 
         $this->createBlockFile($blockPath, $blockName, $className, $viewName);
         $this->createViewFile($viewPath, $viewName);
 
-        $this->info("Block {$blockName} created successfully!");
-        $this->line("PHP file: {$blockPath}");
-        $this->line("View file: {$viewPath}");
+        $this->info(sprintf(__('Block %s created successfully!', 'sage'), $blockName));
+        $this->line(sprintf(__('PHP file: %s', 'sage'), $blockPath));
+        $this->line(sprintf(__('View file: %s', 'sage'), $viewPath));
 
         return 0;
     }

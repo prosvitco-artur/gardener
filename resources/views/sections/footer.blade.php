@@ -91,7 +91,7 @@
               @if(!empty($social['platform']) && !empty($social['url']))
                 <a href="{{ esc_url($social['url']) }}"
                   class="bg-gray-800 p-3 rounded-lg hover:bg-green-600 transition-colors"
-                  aria-label="{{ esc_attr(ucfirst($social['platform'])) }}" target="_blank" rel="noopener noreferrer">
+                  aria-label="{{ esc_attr(sprintf(__('Visit our %s page', 'sage'), ucfirst($social['platform']))) }}" target="_blank" rel="noopener noreferrer">
                   {!! $socialIcons[$social['platform']] ?? '' !!}
                 </a>
               @endif

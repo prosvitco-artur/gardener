@@ -10,7 +10,7 @@
       </ol>
 
       @if ($paginated())
-        <nav aria-label="Comment">
+        <nav aria-label="{{ __('Comment', 'sage') }}">
           <ul class="pager">
             @if ($previous())
               <li class="previous">
