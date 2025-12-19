@@ -8,10 +8,11 @@ $classes = 'icon icon-' . $name;
 if ($class) {
     $classes .= ' ' . $class;
 }
-$viewBox = \App\get_svg_viewbox($name);
+
+$url = get_template_directory_uri() . "/resources/images/icons/icons.svg#icon-$name";
 @endphp
 
-<svg class="{{ $classes }}" aria-hidden="true" focusable="false" viewBox="{{ $viewBox }}">
-    <use href="#icon-{{ $name }}" fill="currentColor"></use>
+<svg class='{{ $classes }}'>
+    <use xlink:href='{{ $url }}'></use>
 </svg>
 

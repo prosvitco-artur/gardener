@@ -44,5 +44,6 @@ html {
     fill: currentColor;
     flex-shrink: 0;
     pointer-events: none;
+    stroke: currentColor;
   }
 }

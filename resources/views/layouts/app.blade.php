@@ -14,8 +14,6 @@
     @php(wp_body_open())
 
     <div id="app">
-      {!! \App\get_svg_sprite() !!}
-      
       <a class="sr-only focus:not-sr-only" href="#main">
         {{ __('Skip to content', 'sage') }}
       </a>
