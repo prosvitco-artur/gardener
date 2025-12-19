@@ -8,7 +8,7 @@
 <header id="gardener-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent" data-scrolled="false">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-20">
-      <a href="{{ esc_url(home_url('/')) }}" class="flex items-center gap-2" rel="home">
+      <a href="{{ esc_url(home_url('/')) }}" class="flex items-center gap-2 mb-0" rel="home">
         <div class="p-2 rounded-lg bg-white header-logo-icon">
           @if($hasCustomLogo && $customLogo)
             @php
