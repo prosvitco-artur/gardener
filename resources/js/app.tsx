@@ -13,10 +13,20 @@ const mountBlocks = () => {
   contactBlocks.forEach((block) => {
     if (!block.hasAttribute('data-mounted')) {
       block.setAttribute('data-mounted', 'true');
+      let translations = undefined;
+      const translationsAttr = block.getAttribute('data-translations');
+      if (translationsAttr) {
+        try {
+          translations = JSON.parse(translationsAttr);
+        } catch (e) {
+          console.warn('Failed to parse translations:', e);
+        }
+      }
+      
       const root = createRoot(block);
       root.render(
         <StrictMode>
-          <Contact />
+          <Contact translations={translations} />
         </StrictMode>
       );
     }
