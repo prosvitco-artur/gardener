@@ -23,7 +23,6 @@ interface ContactProps {
 }
 
 export default function Contact({ translations }: ContactProps) {
-  console.log(translations);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
