@@ -18,7 +18,7 @@ html {
     @apply text-4xl md:text-5xl font-bold mb-4;
   }
   h3 {
-    @apply text-2xl font-bold mb-6;
+    @apply text-2xl font-bold mb-2;
   }
   h4 {
     @apply font-semibold mb-1;
