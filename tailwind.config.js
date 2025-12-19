@@ -1,4 +1,7 @@
 export default {
+  safelist: [
+    'mb-16'
+  ],
   theme: {
     extend: {
       spacing: {
@@ -16,6 +19,10 @@ export default {
       colors: {
         emerald: {
           50: '#ecfdf5',
+        },
+        gray: {
+          600: '#4b5563',
+          900: '#111827',
         },
       },
       fontSize: {

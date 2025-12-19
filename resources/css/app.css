@@ -15,10 +15,20 @@ html {
     @apply text-5xl md:text-7xl font-bold mb-6;
   }
   h2 {
-    @apply text-4xl md:text-5xl font-bold text-gray-900 mb-4;
+    @apply text-4xl md:text-5xl font-bold mb-4;
   }
-  p {
+  h3 {
+    @apply text-2xl font-bold mb-6;
+  }
+  h4 {
+    @apply font-semibold mb-1;
+  }
+  a, p {
     @apply text-xl mb-8 leading-relaxed;
+  }
+
+  a {
+    @apply no-underline!;
   }
 }
 

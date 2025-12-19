@@ -44,7 +44,6 @@ use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
 Block::make(__('{TITLE}', 'sage'))
-    ->set_description(__('{DESCRIPTION}', 'sage'))
     ->set_category('gardener-blocks', __('Gardener Blocks', 'sage'))
     ->set_icon('block-default')
     ->add_fields([
@@ -60,12 +59,10 @@ Block::make(__('{TITLE}', 'sage'))
 PHP;
 
         $title = Str::title(str_replace('-', ' ', $blockName));
-        $description = __('Блок {TITLE}', 'sage');
-        $description = str_replace('{TITLE}', $title, $description);
 
         $content = str_replace(
-            ['{TITLE}', '{DESCRIPTION}', '{VIEW_NAME}'],
-            [$title, $description, $viewName],
+            ['{TITLE}', '{VIEW_NAME}'],
+            [$title, $viewName],
             $stub
         );
 

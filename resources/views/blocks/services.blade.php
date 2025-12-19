@@ -1,9 +1,9 @@
-<section class="py-20 bg-white">
+<section class="py-20 bg-white" id="services">
       <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16">
           <h2>{{ esc_html($fields['title'] ?? '') }}</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            {{ esc_html($fields['description'] ?? '') }}
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            {!! esc_html($fields['description'] ?? '') !!}
           </p>
         </div>
 
