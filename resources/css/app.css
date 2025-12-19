@@ -24,11 +24,11 @@ html {
     @apply font-semibold mb-1;
   }
   a, p {
-    @apply text-xl mb-8 leading-relaxed;
+    @apply text-xl mb-8 leading-[1.4];
   }
 
   a {
-    @apply no-underline!;
+    @apply no-underline! leading-none;
   }
 }
 

@@ -19,6 +19,7 @@
 
 <footer class="bg-gray-900 text-white py-12">
   <div class="max-w-7xl mx-auto px-4">
+    @if(!empty($footerDescription) || !empty($socialLinks) || !empty($footerHours) || !empty($footerSaturday) || !empty($footerSunday))
     <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
       <div class="flex-shrink-0">
         <div class="flex items-center gap-2 mb-4">
@@ -103,9 +104,10 @@
             {{ esc_html($footerSaturday) }}<br />
             {{ esc_html($footerSunday) }}
           </p>
-        </div>
-      @endif
-    </div>
+          </div>
+        @endif
+      </div>
+    @endif
 
     <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
       <p>&copy; {{ date('Y') }} {{ esc_html($siteName) }}. {{ __('All rights reserved.', 'sage') }}</p>

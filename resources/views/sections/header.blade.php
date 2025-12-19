@@ -40,12 +40,12 @@
           ]);
         @endphp
         {!! $menuOutput !!}
-        <button 
-          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 header-cta-btn"
-          data-consultation-btn
+        <a 
+          class="mb-0 bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 header-cta-btn"
+          href="#contact-us-form"
         >
           {{ esc_html($ctaText) }}
-        </button>
+        </a>
       </nav>
 
       <button 

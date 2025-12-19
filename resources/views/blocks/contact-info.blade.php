@@ -8,7 +8,7 @@
 @endphp
 
 <div>
-  <h3 class="text-gray-900">
+  <h3 class="text-gray-900 mb-4">
     {{ $title }}
   </h3>
 
@@ -19,7 +19,7 @@
       </div>
       <div>
         <h4 class="text-gray-900">Phone</h4>
-        <a class="text-gray-600" href="tel:{{ $phoneNumber }}">{{ $phone }}</a>
+        <a class="text-gray-600 leading-none" href="tel:{{ $phoneNumber }}">{{ $phone }}</a>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       </div>
       <div>
         <h4 class="text-gray-900">Email</h4>
-        <a class="text-gray-600" href="mailto:{{ $email }}">{{ $email }}</a>
+        <a class="text-gray-600 leading-none" href="mailto:{{ $email }}">{{ $email }}</a>
       </div>
     </div>
 

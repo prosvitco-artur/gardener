@@ -31,7 +31,7 @@
                   {{ esc_html($service['title'] ?? '') }}
                 </h3>
                 <p class="text-gray-600 leading-relaxed">
-                  {{ esc_html($service['description'] ?? '') }}
+                  {!! esc_html($service['description'] ?? '') !!}
                 </p>
               </div>
             </div>
