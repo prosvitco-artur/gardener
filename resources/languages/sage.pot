@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-19T13:25:36+00:00\n"
+"POT-Creation-Date: 2025-12-19T14:27:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sage\n"
@@ -79,10 +79,12 @@ msgid "Блок Contact Info"
 msgstr ""
 
 #: app/blocks/contact-info.php:12
+#: resources/views/blocks/contact-info.blade.php:22
 msgid "Phone"
 msgstr ""
 
 #: app/blocks/contact-info.php:13
+#: resources/views/blocks/contact-info.blade.php:32
 msgid "Email"
 msgstr ""
 
@@ -330,6 +332,10 @@ msgstr ""
 msgid "Sorry, but the page you are trying to view does not exist."
 msgstr ""
 
+#: resources/views/blocks/contact-info.blade.php:42
+msgid "Location"
+msgstr ""
+
 #: resources/views/blocks/image-project-block.blade.php:12
 msgid "Projects Completed"
 msgstr ""
@@ -375,23 +381,23 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:64
+#: resources/views/sections/footer.blade.php:65
 msgid "Services"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:83
+#: resources/views/sections/footer.blade.php:84
 msgid "Company"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:91
+#: resources/views/sections/footer.blade.php:92
 msgid "Follow Us"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:99
+#: resources/views/sections/footer.blade.php:100
 msgid "Visit our %s page"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:118
+#: resources/views/sections/footer.blade.php:120
 msgid "All rights reserved."
 msgstr ""
 

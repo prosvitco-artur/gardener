@@ -2,7 +2,6 @@
   $siteName = get_bloginfo('name');
   $hasCustomLogo = has_custom_logo();
   $customLogo = $hasCustomLogo ? get_custom_logo() : '';
-  $ctaText = carbon_get_theme_option('header_cta_text') ?: __('Get Quote', 'sage');
 @endphp
 
 <header id="gardener-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent" data-scrolled="false">
@@ -44,7 +43,7 @@
           class="mb-0 bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 header-cta-btn"
           href="#contact-us-form"
         >
-          {{ esc_html($ctaText) }}
+          {!! __('Get Quote', 'sage') !!}
         </a>
       </nav>
 

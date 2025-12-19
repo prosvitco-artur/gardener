@@ -8,7 +8,7 @@ add_filter('excerpt_more', function () {
 
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
     if (function_exists('wp_set_script_translations') && strpos($handle, 'app') !== false) {
-        wp_set_script_translations($handle, 'sage', get_template_directory() . '/resources/lang');
+        wp_set_script_translations($handle, 'sage', get_template_directory() . '/resources/languages');
     }
     return $tag;
 }, 10, 3);

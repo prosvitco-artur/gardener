@@ -18,7 +18,7 @@
         <x-icon-component name="phone" class="text-white" />
       </div>
       <div>
-        <h4 class="text-gray-900">Phone</h4>
+        <h4 class="text-gray-900">{{ __('Phone', 'sage') }}</h4>
         <a class="text-gray-600 leading-none" href="tel:{{ $phoneNumber }}">{{ $phone }}</a>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <x-icon-component name="email" class="text-white" />
       </div>
       <div>
-        <h4 class="text-gray-900">Email</h4>
+        <h4 class="text-gray-900">{{ __('Email', 'sage') }}</h4>
         <a class="text-gray-600 leading-none" href="mailto:{{ $email }}">{{ $email }}</a>
       </div>
     </div>
@@ -38,7 +38,7 @@
         <x-icon-component name="map-pin" class="text-white" />
       </div>
       <div>
-        <h4 class="text-gray-900">Location</h4>
+        <h4 class="text-gray-900">{{ __('Location', 'sage') }}</h4>
         <p class="text-gray-600">{{ $address }}</p>
       </div>
     </div>
