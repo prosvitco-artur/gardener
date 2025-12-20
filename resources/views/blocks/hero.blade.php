@@ -3,7 +3,6 @@
   $description = $fields['description'];
   $bgImageId = $fields['background_image'];
   $bgImageUrl = $bgImageId ? wp_get_attachment_image_url($bgImageId, 'full') : 'https://images.pexels.com/photos/1453499/pexels-photo-1453499.jpeg?auto=compress&cs=tinysrgb&w=1920';
-  $ctaText = $fields['cta_text'];
   $ctaUrl = $fields['cta_url'];
 @endphp
 
@@ -27,7 +26,7 @@
         class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-xl hero-cta-btn"
         data-consultation-btn
       >
-        {{ esc_html($ctaText) }}
+        {!! __('Get Quote', 'sage') !!}
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
         </svg>
@@ -37,7 +36,7 @@
         href="{{ esc_url($ctaUrl) }}"
         class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-xl"
       >
-        {{ esc_html($ctaText) }}
+        {!! __('Get Quote', 'sage') !!}
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
         </svg>

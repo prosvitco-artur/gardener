@@ -80,7 +80,7 @@
         class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-semibold header-mobile-cta"
         data-consultation-btn
       >
-        {{ esc_html($ctaText) }}
+        {!! __('Get Quote', 'sage') !!}
       </button>
     </nav>
   </div>
