@@ -41,7 +41,6 @@
   "require": {
     "php": ">=8.2",
     "htmlburger/carbon-fields": "^3.6",
-    "nutgram/nutgram": "^4.39",
     "roots/acorn": "^5.0"
   },
   "require-dev": {
