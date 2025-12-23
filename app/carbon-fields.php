@@ -30,6 +30,14 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('text', 'footer_hours', __('Години роботи', 'sage')),
             Field::make('text', 'footer_saturday', __('Субота', 'sage')),
             Field::make('text', 'footer_sunday', __('Неділя', 'sage')),
+        ])
+        ->add_tab(__('Telegram', 'sage'), [
+            Field::make('text', 'telegram_bot_token', __('Bot Token', 'sage'))
+                ->set_help_text(__('Отримайте токен бота від @BotFather в Telegram. Бот має бути доданий в групу як адміністратор', 'sage'))
+                ->set_attribute('placeholder', '123456789:ABCdefGHIjklMNOpqrsTUVwxyz'),
+            Field::make('text', 'telegram_chat_id', __('Group ID', 'sage'))
+                ->set_help_text(__('ID Telegram групи куди відправлятимуться повідомлення. Додайте @RawDataBot в групу та скопіюйте ID з повідомлення', 'sage'))
+                ->set_attribute('placeholder', '-1001234567890'),
         ]);
 });
 

@@ -1,12 +1,10 @@
 @php
   $translations = [
     'name' => __('Name', 'sage'),
-    'email' => __('Email', 'sage'),
     'phone' => __('Phone', 'sage'),
     'service' => __('Service', 'sage'),
     'message' => __('Message', 'sage'),
     'enterName' => __('Enter your name', 'sage'),
-    'enterEmail' => __('Enter your email', 'sage'),
     'enterPhone' => __('Enter your phone', 'sage'),
     'selectService' => __('Select service', 'sage'),
     'describeRequest' => __('Describe your request', 'sage'),
@@ -23,4 +21,5 @@
 <div 
   id="gardener-contact-block" 
   data-translations="{{ json_encode($translations) }}"
+  data-block-id="{{ $attributes['id'] ?? '' }}"
 ></div>

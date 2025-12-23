@@ -340,6 +340,70 @@ msgstr ""
 msgid "Projects Completed"
 msgstr ""
 
+#: resources/views/blocks/form.blade.php:3
+msgid "Name"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:4
+msgid "Email"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:5
+msgid "Phone"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:6
+msgid "Service"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:7
+msgid "Message"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:8
+msgid "Enter your name"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:9
+msgid "Enter your email"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:10
+msgid "Enter your phone"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:11
+msgid "Select service"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:12
+msgid "Describe your request"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:13
+msgid "Landscape design"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:14
+msgid "Garden maintenance"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:15
+msgid "Irrigation"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:16
+msgid "Consultation"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:17
+msgid "Send"
+msgstr ""
+
+#: resources/views/blocks/form.blade.php:18
+msgid "Message sent!"
+msgstr ""
+
 #: resources/views/forms/search.blade.php:4
 msgctxt "label"
 msgid "Search for:"
@@ -407,4 +471,48 @@ msgstr ""
 
 #: resources/views/sections/header.blade.php:57
 msgid "Toggle menu"
+msgstr ""
+
+#: app/api.php:15
+msgid "Required fields are missing"
+msgstr ""
+
+#: app/api.php:22
+msgid "Invalid email address"
+msgstr ""
+
+#: app/api.php:40
+msgid "Message sent successfully"
+msgstr ""
+
+#: app/api.php:46
+msgid "Failed to send message"
+msgstr ""
+
+#: app/Telegram.php:20
+msgid "Telegram bot is not configured"
+msgstr ""
+
+#: app/Telegram.php:40
+msgid "Unknown error"
+msgstr ""
+
+#: app/carbon-fields.php:35
+msgid "Telegram"
+msgstr ""
+
+#: app/carbon-fields.php:36
+msgid "Bot Token"
+msgstr ""
+
+#: app/carbon-fields.php:37
+msgid "Отримайте токен від @BotFather в Telegram"
+msgstr ""
+
+#: app/carbon-fields.php:39
+msgid "Chat ID"
+msgstr ""
+
+#: app/carbon-fields.php:40
+msgid "ID чату куди відправлятимуться повідомлення. Можна отримати від @userinfobot"
 msgstr ""

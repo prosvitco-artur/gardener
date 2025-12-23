@@ -49,7 +49,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'carbon-fields', 'blocks', 'helpers'])
+collect(['setup', 'filters', 'carbon-fields', 'blocks', 'helpers', 'api'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
