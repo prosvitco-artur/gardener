@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle2 } from 'lucide-react';
 
 interface ContactProps {
   translations?: {
@@ -17,6 +17,7 @@ interface ContactProps {
     consultation: string;
     send: string;
     messageSent: string;
+    successMessage: string;
   };
 }
 
@@ -103,6 +104,7 @@ export default function Contact({ translations }: ContactProps) {
     consultation: 'Consultation',
     send: 'Send',
     messageSent: 'Message sent!',
+    successMessage: 'Thank you for your request! We will contact you soon.',
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -138,13 +140,29 @@ export default function Contact({ translations }: ContactProps) {
       
       setTimeout(() => {
         setSubmitted(false);
-      }, 3000);
+      }, 5000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
   };
+
+  if (submitted) {
+    return (
+      <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="text-center py-8">
+          <div className="flex justify-center mb-4">
+            <CheckCircle2 className="w-16 h-16 text-green-600" />
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.messageSent}</h3>
+          <p className="text-gray-600">
+            {t.successMessage}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-2xl shadow-xl p-8">
@@ -228,7 +246,7 @@ export default function Contact({ translations }: ContactProps) {
 
         <button
           type="submit"
-          disabled={loading || submitted}
+          disabled={loading}
           className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none flex items-center justify-center gap-2 shadow-lg"
         >
           {loading ? (
@@ -238,11 +256,6 @@ export default function Contact({ translations }: ContactProps) {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
               {t.send}...
-            </>
-          ) : submitted ? (
-            <>
-              {t.messageSent}
-              <Send size={20} />
             </>
           ) : (
             <>

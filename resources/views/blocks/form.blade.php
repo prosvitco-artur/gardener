@@ -14,6 +14,7 @@
     'consultation' => __('Consultation', 'sage'),
     'send' => __('Send', 'sage'),
     'messageSent' => __('Message sent!', 'sage'),
+    'successMessage' => __('Thank you for your request! We will contact you soon.', 'sage'),
   ];
 @endphp
 

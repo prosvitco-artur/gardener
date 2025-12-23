@@ -404,6 +404,10 @@ msgstr ""
 msgid "Message sent!"
 msgstr ""
 
+#: resources/views/blocks/form.blade.php:19
+msgid "Thank you for your request! We will contact you soon."
+msgstr ""
+
 #: resources/views/forms/search.blade.php:4
 msgctxt "label"
 msgid "Search for:"
